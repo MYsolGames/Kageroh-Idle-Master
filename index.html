@@ -1,1 +1,87 @@
 <!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>影廊アイドルマスター</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0b1022;
+        --frame: #0e1628;
+        --panel: rgba(255,255,255,.06);
+        --text: #e6eaf2;
+      }
+      * { box-sizing: border-box; }
+      html, body {height: 100%; }
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #0b1022, #1e2445);
+        color: var(--text);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+        display: grid; place-items: center;
+        min-height: 100svh;
+      }
+
+      /* スマホっぽい縦長フレーム（常に内容が収まる） */
+      .phone {
+        position: relative;
+        width: clamp(320px, 92vw, 420px);
+        height: clamp(560px, 92vh, 860px);
+        background: var(--frame);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.45);
+        overflow: hidden; /* はみ出さない */
+        padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 16px 16px;
+        display: flex; flex-direction: column;
+        gap: 12px;
+      }
+
+      header { text-align: center; padding-bottom: 8px; }
+      h1 { margin: 0; font-weight: 800; letter-spacing: .02em; line-height: 1.2;
+          font-size: clamp(1.2rem, 2.5vw * 0.8rem, 1.6rem);}
+
+      /* 右上のセーブ・ロード（縦並び） */
+      .top-right {
+        position: absolute; right: 12px; top: calc(8px + env(safe-area-inset-top, 0px));
+        display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+      }
+      .btn {
+        border: 1px solid rgba(255,255,255,.2);
+        background: var(--panel);
+        color: var(--text);
+        font-weight: 700; font-size: .9rem;
+        padding: 8px 12px; border-radius: 12px;
+        cursor: pointer; user-select: none;
+      }
+      .btn:active { transform: translateY(1px); }
+
+      /* メイン領域 */
+      main {
+        flex: 1; background: rgba(0,0,0,.25); border-radius: 16px;
+        padding: 12px; overflow: auto;
+      }
+      .hint {opacity:.8; font-size:.95rem; }
+
+      footer { text-align: center; opacity:.7; font-size:.8rem; }
+    </style>
+  </head>
+  <body>
+    <div class="phone" role="application" aria-label="影廊アイドルマスター">
+      <div class="top-right">
+        <button id="saveBtn" class="btn" aria-label="セーブ">セーブ</button>
+        <button id="loadBtn" class="btn" aria-label="ロード">ロード</button>
+      </div>
+
+      <header>
+        <h1>影廊アイドルマスター</h1>
+      </header>
+
+      <main>
+        <p class="hint">UIのみ実装（機能は未接続）。ここにゲームの各パネルを配置していきます。</p>
+      </main>
+
+      <footer>v0 レイアウト雛形 ー GitHub Pages対応</footer>
+    </div>
+  </body>
